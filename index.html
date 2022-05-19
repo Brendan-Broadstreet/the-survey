@@ -1,42 +1,21 @@
-<script src="https://www.google.com/recaptcha/api.js"></script>
-
-<script>
-  const recommendationValueInput = document.getElementById(
-    "recommendTheAcademyToFriendsFamily"
-  );
-  const plsExplainInput = document.getElementById(
-    "ifEqualOrLessThan8PlsExplainDiv"
-  );
-
-  recommendationValueInput.addEventListener("change", (e) => {
-    e.preventDefault();
-
-    if (e.target.value <= 8) {
-      plsExplainInput.style = "display: block;";
-    } else {
-      plsExplainInput.style = "display: none;";
-    }
-  });
-
-  function AppendQueryString() {
-    const form = document.getElementById("StudentSurvey2022")
-    const queryString = window.location.search;
-
-    document.getElementById("redirectUrl").value += queryString;
-
-    let formAction = form.action;
-    if (queryString) {
-      if (formAction.includes("?")) form.action = formAction + "&" + queryString.substring(1);
-      else form.action = formAction + queryString;
-    }
+<style>
+  .blue-box-better {
+  background: linear-gradient(319deg, rgba(52,141,185,1) 0%, rgba(71,179,232,1) 44%, rgba(52,141,185,1) 100%); 
+  padding: 5%; 
+  font-size: 14px; 
+  margin-bottom: 1em; 
+  color: #fff;
   }
-
-  function onSubmit(token) {
-    AppendQueryString();
-    const from = document.getElementById("StudentSurvey2022").submit();
+  
+  .blue-box-better label {
+  color:#fff;
   }
-</script>
-
+  
+  .blue-box-better select {
+  height: 1.9em;
+  width:100%;
+  }
+</style>
 
 <div style="max-width:100%;" class="blue-box-better">
   <form method="post" action="https://efaformsubmissions.azurewebsites.net/api/PostForm?code=B52d7mmaHlrl6o/2DkTzekEAd3Pf81C9jDgohA7LleKPZvLymUWTMg==" id="StudentSurvey2022" target="_self">
@@ -254,3 +233,42 @@
         data-action='submit'>Submit</button></center>
   </form>
 </div>
+
+<script src="https://www.google.com/recaptcha/api.js"></script>
+
+<script>
+  const recommendationValueInput = document.getElementById(
+    "recommendTheAcademyToFriendsFamily"
+  );
+  const plsExplainInput = document.getElementById(
+    "ifEqualOrLessThan8PlsExplainDiv"
+  );
+
+  recommendationValueInput.addEventListener("change", (e) => {
+    e.preventDefault();
+
+    if (e.target.value <= 8) {
+      plsExplainInput.style = "display: block;";
+    } else {
+      plsExplainInput.style = "display: none;";
+    }
+  });
+
+  function AppendQueryString() {
+    const form = document.getElementById("StudentSurvey2022")
+    const queryString = window.location.search;
+
+    document.getElementById("redirectUrl").value += queryString;
+
+    let formAction = form.action;
+    if (queryString) {
+      if (formAction.includes("?")) form.action = formAction + "&" + queryString.substring(1);
+      else form.action = formAction + queryString;
+    }
+  }
+
+  function onSubmit(token) {
+    AppendQueryString();
+    const from = document.getElementById("StudentSurvey2022").submit();
+  }
+</script>
