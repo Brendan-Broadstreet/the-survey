@@ -1,1 +1,259 @@
-<h1>Hello!!</h1> 
+<script src="https://www.google.com/recaptcha/api.js"></script>
+
+<script>
+  const recommendationValueInput = document.getElementById(
+    "recommendTheAcademyToFriendsFamily"
+  );
+  const plsExplainInput = document.getElementById(
+    "ifEqualOrLessThan8PlsExplainDiv"
+  );
+
+  recommendationValueInput.addEventListener("change", (e) => {
+    e.preventDefault();
+
+    if (e.target.value <= 8) {
+      plsExplainInput.style = "display: block;";
+    } else {
+      plsExplainInput.style = "display: none;";
+    }
+  });
+
+  function AppendQueryString() {
+    const form = document.getElementById("StudentSurvey2022")
+    const queryString = window.location.search;
+
+    document.getElementById("redirectUrl").value += queryString;
+
+    let formAction = form.action;
+    if (queryString) {
+      if (formAction.includes("?")) form.action = formAction + "&" + queryString.substring(1);
+      else form.action = formAction + queryString;
+    }
+  }
+
+  function onSubmit(token) {
+    AppendQueryString();
+    const from = document.getElementById("StudentSurvey2022").submit();
+  }
+</script>
+
+<div style="width: 100%;"><iframe style="width: 100%;" src="https://elevenfifty.org/student-survey/"
+    frameborder="0"></iframe></div>
+
+
+<div class="blue-box-better">
+  <form method="post" action="https://efaformsubmissions.azurewebsites.net/api/PostForm?code=B52d7mmaHlrl6o/2DkTzekEAd3Pf81C9jDgohA7LleKPZvLymUWTMg==" id="StudentSurvey2022" target="_self">
+    <br>
+    <u>Please take our survey and let us know what you thought of your past few weeks of class!</u>
+    <div><input type="hidden" name="formName" value="LRN-Student Survey 2022" /></div>
+    <div><input type="hidden" name="recordTypeId" value="0121Q000001Duv5QAC" /></div>
+    <div><input type="hidden" name="NonStudentTrigger" value="false" /></div>
+    <div><input type="hidden" name="redirectUrl" id="redirectUrl" value="https://elevenfifty.org/learning-survey-completion/" />
+    </div>
+
+    <div>
+      <div><input type="hidden" name="LearningSurveyCompletionDate" /></div>
+      <div><input type="hidden" name="CanvasId" /></div>
+      <div><input type="hidden" name="Email" /></div>
+    </div>
+    <div>
+      <div><label for="learningALotRating">I am learning a lot.</label></div>
+      <select id="learningALotRating" name="learningALotRating">
+        <option value="" disabled selected hidden>Select a rating</option>
+        <option value="Strongly disagree">Strongly disagree</option>
+        <option value="Disagree">Disagree</option>
+        <option value="Somewhat disagree">Somewhat disagree</option>
+        <option value="Neither agree nor disagree">
+          Neither agree nor disagree
+        </option>
+        <option value="Somewhat agree">Somewhat agree</option>
+        <option value="Agree">Agree</option>
+        <option value="Strongly agree">Strongly agree</option>
+      </select>
+    </div>
+    <br>
+    <div>
+      <div><label for="knowledgeOfInstructors">My instructors are knowledgeable about the subject matter.</label></div>
+      <select id="knowledgeOfInstructors" name="knowledgeOfInstructors">
+        <option value="" disabled selected hidden>Select a rating</option>
+        <option value="Strongly disagree">Strongly disagree</option>
+        <option value="Disagree">Disagree</option>
+        <option value="Somewhat disagree">Somewhat disagree</option>
+        <option value="Neither agree nor disagree">
+          Neither agree nor disagree
+        </option>
+        <option value="Somewhat agree">Somewhat agree</option>
+        <option value="Agree">Agree</option>
+        <option value="Strongly agree">Strongly agree</option>
+      </select>
+    </div>
+    <br>
+    <div>
+      <div><label for="effectivenessOfTeachingMethod">The teaching methods are effective at helping me learn.</label>
+      </div>
+      <select id="effectivenessOfTeachingMethod" name="effectivenessOfTeachingMethod">
+        <option value="" disabled selected hidden>Select a rating</option>
+        <option value="Strongly disagree">Strongly disagree</option>
+        <option value="Disagree">Disagree</option>
+        <option value="Somewhat disagree">Somewhat disagree</option>
+        <option value="Neither agree nor disagree">
+          Neither agree nor disagree
+        </option>
+        <option value="Somewhat agree">Somewhat agree</option>
+        <option value="Agree">Agree</option>
+        <option value="Strongly agree">Strongly agree</option>
+      </select>
+    </div>
+    <br>
+    <div>
+      <div><label for="comfortableWithLearningMode">I am comfortable with my learning mode (in person, flex, or
+          remotely).</label></div>
+      <select id="comfortableWithLearningMode" name="comfortableWithLearningMode">
+        <option value="" disabled selected hidden>Select a rating</option>
+        <option value="Strongly disagree">Strongly disagree</option>
+        <option value="Disagree">Disagree</option>
+        <option value="Somewhat disagree">Somewhat disagree</option>
+        <option value="Neither agree nor disagree">
+          Neither agree nor disagree
+        </option>
+        <option value="Somewhat agree">Somewhat agree</option>
+        <option value="Agree">Agree</option>
+        <option value="Strongly agree">Strongly agree</option>
+      </select>
+    </div>
+    <br>
+    <div>
+      <div><label for="connectedToInstructors">I feel connected to my instructor(s).</label></div>
+
+      <select id="connectedToInstructors" name="connectedToInstructors">
+        <option value="" disabled selected hidden>Select a rating</option>
+        <option value="Strongly disagree">Strongly disagree</option>
+        <option value="Disagree">Disagree</option>
+        <option value="Somewhat disagree">Somewhat disagree</option>
+        <option value="Neither agree nor disagree">
+          Neither agree nor disagree
+        </option>
+        <option value="Somewhat agree">Somewhat agree</option>
+        <option value="Agree">Agree</option>
+        <option value="Strongly agree">Strongly agree</option>
+      </select>
+    </div>
+    <br>
+    <div>
+      <div><label for="connectedToClassmates">I feel connected to my classmates.</label>
+      </div>
+      <select id="connectedToClassmates" name="connectedToClassmates">
+        <option value="" disabled selected hidden>Select a rating</option>
+        <option value="Strongly disagree">Strongly disagree</option>
+        <option value="Disagree">Disagree</option>
+        <option value="Somewhat disagree">Somewhat disagree</option>
+        <option value="Neither agree nor disagree">
+          Neither agree nor disagree
+        </option>
+        <option value="Somewhat agree">Somewhat agree</option>
+        <option value="Agree">Agree</option>
+        <option value="Strongly agree">Strongly agree</option>
+      </select>
+    </div>
+    <br>
+    <div>
+      <div><label for="stressLevelRating">My stress level is low right now.</label>
+      </div>
+      <select id="stressLevelRating" name="stressLevelRating">
+        <option value="" disabled selected hidden>Select a rating</option>
+        <option value="Strongly disagree">Strongly disagree</option>
+        <option value="Disagree">Disagree</option>
+        <option value="Somewhat disagree">Somewhat disagree</option>
+        <option value="Neither agree nor disagree">
+          Neither agree nor disagree
+        </option>
+        <option value="Somewhat agree">Somewhat agree</option>
+        <option value="Agree">Agree</option>
+        <option value="Strongly agree">Strongly agree</option>
+      </select>
+    </div>
+    <br>
+    <div>
+      <div><label for="instructorsAreFair">My instructor(s) are fair and impartial.</label></div>
+      <select id="instructorsAreFair" name="instructorsAreFair">
+        <option value="" disabled selected hidden>Select a rating</option>
+        <option value="Strongly disagree">Strongly disagree</option>
+        <option value="Disagree">Disagree</option>
+        <option value="Somewhat disagree">Somewhat disagree</option>
+        <option value="Neither agree nor disagree">
+          Neither agree nor disagree
+        </option>
+        <option value="Somewhat agree">Somewhat agree</option>
+        <option value="Agree">Agree</option>
+        <option value="Strongly agree">Strongly agree</option>
+      </select>
+    </div>
+    <br>
+    <div>
+      <div><label for="myInstructorsAreAvailableForMyNeeds">My instructor(s) are available for my needs</label></div>
+      <select id="myInstructorsAreAvailableForMyNeeds" name="myInstructorsAreAvailableForMyNeeds">
+        <option value="" disabled selected hidden>Select a rating</option>
+        <option value="Strongly disagree">Strongly disagree</option>
+        <option value="Disagree">Disagree</option>
+        <option value="Somewhat disagree">Somewhat disagree</option>
+        <option value="Neither agree nor disagree">
+          Neither agree nor disagree
+        </option>
+        <option value="Somewhat agree">Somewhat agree</option>
+        <option value="Agree">Agree</option>
+        <option value="Strongly agree">Strongly agree</option>
+      </select>
+    </div>
+    <br>
+    <div>
+      <span>Are you a coding student?</span>
+      <input style="display: inline-block;" type="radio" id="codingStudent" name="areYouACodingStudent"
+        value="Coding Student" />&nbsp;<span>Coding Student</span><br />
+      <input type="radio" id="nonCodingStudent" name="areYouACodingStudent"
+        value="NON-Coding Student (Cyber, UX/UI, etc.)" />&nbsp;<span for="nonCodingStudent">NON-Coding Student (Cyber, etc.)</span><br />
+    </div>
+    <br>
+    <div>
+      <div>
+        <label for="recommendTheAcademyToFriendsFamily" style="margin-bottom: 0px;">Based on your experience, how likely are you to recommend the
+          Academy to a friend or family member?</label>
+      </div>
+      <small>10 = I am going to recommend the Academy to everyone. 1 = I am not going to recommend the Academy to anyone.</small>
+      <select id="recommendTheAcademyToFriendsFamily" name="recommendTheAcademyToFriendsFamily">
+        <option value="" disabled selected hidden>Select a value</option>
+
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+      </select>
+    </div>
+
+    <div id="ifEqualOrLessThan8PlsExplainDiv" style="display: none">
+      <div>
+        If equal to or less than 8, what would you say is the primary reason for
+        the score you provided?
+      </div>
+
+      <div>
+        <textarea name="ifEqualOrLessThan8PleaseExplain" rows="4" cols="50"></textarea>
+      </div>
+    </div>
+    <br>
+    <div>What else would you like us to know?</div>
+
+    <div>
+      <textarea name="whatElseWouldYouLikeUsToKnow" rows="4"
+        cols="50" placeholder="Use this space to unload your thoughts and feelings about how to make your experience better or anything else."></textarea>
+    </div>
+
+    <center><button class="g-recaptcha" data-sitekey="6LfStPQfAAAAALn6ezzn7cGUEr4hM14kSG3K_eqV" data-callback='onSubmit'
+        data-action='submit'>Submit</button></center>
+  </form>
+</div>
